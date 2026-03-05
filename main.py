@@ -76,7 +76,7 @@ def neuronas(x1, x2, w1, w2, b, funkcija='threshold'):
         b        – poslinkis (bias)
         funkcija – 'threshold' arba 'sigmoid'
     """
-    # Apskaičiuojame neuro tiesinio jungiklio išėjimą (svertinė suma + poslinkis)
+    # Apskaičiuojame neurono išėjimą (svertinė suma + poslinkis)
     a = w1 * x1 + w2 * x2 + b
 
     if funkcija == 'threshold':
@@ -102,13 +102,13 @@ def ieskoti_svoriu(duomenys, funkcija='threshold', kiek=3):
     tikrinama, ar neuronas su tais svoriais klasifikuoja visus 30 taškų teisingai.
     Ieškoma tol, kol randami `kiek` skirtingų sprendinių arba pasiekiamas bandymų limitas.
 
-    Grąžina: sąrašą kortežų (w1, w2, b).
+    Grąžina: sąrašą (w1, w2, b).
     """
     # Išskiriame įėjimo duomenis ir etiketes
     X = duomenys[['x1', 'x2']].values
     y = duomenys['class'].values
 
-    rasti_sprendiniai = []  # Čia kaupsiме rastus tinkamus svorių rinkinius
+    rasti_sprendiniai = []  # Čia kaupsime rastus tinkamus svorių rinkinius
     bandymai = 0
     max_bandymai = 100000   # Saugiklis, kad ciklas nesitęstų be galo
 
@@ -162,7 +162,7 @@ sprendiniai_sigmoid = ieskoti_svoriu(df, 'sigmoid', 3)
 
 
 # -----------------------------------------------------------------------
-# VIZUALIZACIJA: SPRENDIMO RIBOS IR NORMALIŲJŲ VEKTORIAI
+# VIZUALIZACIJA: SPRENDIMO RIBOS IR NORMALIEJI VEKTORIAI
 # -----------------------------------------------------------------------
 
 def braizyti_tieses_ir_vektorius(duomenys, sprendiniai, pavadinimas, failas):
